@@ -61,7 +61,7 @@ sudo apt install -y tros-hobot-chatbot
 
 2. 修改BPU保留内存大小和设置CPU频率
 
-    同时需要修改BPU保留内存大小为1.7GB，命令如下：
+    修改BPU保留内存大小为1.7GB，命令如下：
 
     ```bash
     # 替换dtb文件
