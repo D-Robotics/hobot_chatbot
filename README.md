@@ -46,7 +46,7 @@ sudo apt install -y tros-hobot-chatbot
  
         ```bash
         # 下载大语言模型文件
-        wget http://archive.sunrisepi.tech/llm-model/llm_model.tar.gz
+        wget http://sunrise.horizon.cc/llm-model/llm_model.tar.gz
 
         # 解压
         sudo tar -xf llm_model.tar.gz -C /opt/tros/lib/hobot_llm/
@@ -55,7 +55,7 @@ sudo apt install -y tros-hobot-chatbot
    2. 下载TTS模型
 
        ```bash
-       wget http://archive.sunrisepi.tech//tts-model/tts_model.tar.gz
+       wget http://sunrise.horizon.cc//tts-model/tts_model.tar.gz
        sudo tar -xf tts_model.tar.gz -C /opt/tros/lib/hobot_tts/
        ```
 
