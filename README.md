@@ -61,17 +61,7 @@ sudo apt install -y tros-hobot-chatbot
 
 2. 修改BPU保留内存大小和设置CPU频率
 
-    修改BPU保留内存大小为1.7GB，命令如下：
-
-    ```bash
-    # 替换dtb文件
-    sudo cp /opt/tros/lib/hobot_llm/config/hobot-dtb/*.dtb /boot/hobot/
-
-    sync
-
-    # 重启
-    reboot
-    ```
+    修改BPU保留内存大小为1.7GB，设置方法参考[TODO]()。
 
     重启后调整CPU最高频率为1.5GHz，以及设置调度模式为`performance`，命令如下：
 
@@ -91,14 +81,7 @@ sudo apt install -y tros-hobot-chatbot
 
    2. 修改 *config/audio_config.json*，将`asr_mode`字段为`1`。
 
-   3. 加载音频驱动
-   
-    ```shell
-    # 加载音频驱动，设备启动之后只需要加载一次
-    bash config/audio.sh
-    ```
-
-    注意：加载音频驱动时确保无其他音频设备连接，例如USB麦克风或带麦克风功能的USB摄像头，否则会导致应用打开音频设备失败，报错退出。
+   3. 确认音频设备设置正确，具体设置方法参考RDK用户手册[音频转接板](https://developer.horizon.cc/documents_rdk/hardware_development/rdk_x3/audio_board)章节。
 
 4. 配置tros.b环境和启动应用
 
