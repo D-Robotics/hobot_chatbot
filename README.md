@@ -49,14 +49,14 @@ sudo apt install -y tros-hobot-chatbot
         wget http://sunrise.horizon.cc/llm-model/llm_model.tar.gz
 
         # 解压
-        sudo tar -xf llm_model.tar.gz -C /opt/tros/lib/hobot_llm/
+        sudo tar -xf llm_model.tar.gz -C /opt/tros/${TROS_DISTRO}/lib/hobot_llm/
         ```
 
    2. 下载TTS模型
 
        ```bash
        wget http://sunrise.horizon.cc//tts-model/tts_model.tar.gz
-       sudo tar -xf tts_model.tar.gz -C /opt/tros/lib/hobot_tts/
+       sudo tar -xf tts_model.tar.gz -C /opt/tros/${TROS_DISTRO}/lib/hobot_tts/
        ```
 
 2. 修改BPU保留内存大小和设置CPU频率
@@ -76,7 +76,7 @@ sudo apt install -y tros-hobot-chatbot
 
         ```shell
         # 从tros.b的安装路径中拷贝出运行示例需要的配置文件，若已拷贝则可忽略
-        cp -r /opt/tros/lib/hobot_audio/config/ .
+        cp -r /opt/tros/${TROS_DISTRO}/lib/hobot_audio/config/ .
         ```
 
    2. 修改 *config/audio_config.json*，将`asr_mode`字段为`1`。
