@@ -1,119 +1,119 @@
-# 功能介绍
+English| [简体中文](./README_cn.md)
 
-**hobot_chatbot** 聊天机器人实现端侧智能聊天功能，聊天过程中无需联网。该应用基于智能语音，大语言模型和文本转语音模块，将智能语音ASR识别结果送给端侧大语言模型处理，得到输出结果，最后通过文本转语音模块播放出来。
+# Feature Introduction
 
-# 物料清单
+**hobot_chatbot** Chatbot implements intelligent chat functionality on the client side without the need for an Internet connection. This application is based on intelligent voice, a large language model, and a text-to-speech module. It sends the intelligent voice ASR recognition results to the client-side large language model for processing, obtains the output results, and finally plays them back through the text-to-speech module.
 
-| 机器人名称         | 生产厂家 | 参考链接                                                        |
-| :----------------- | -------- | --------------------------------------------------------------- |
-| RDK X3 （4GB内存） | 多厂家   | [点击跳转](https://developer.horizon.cc/rdkx3)                  |
-| 麦克风板           | 微雪电子 | [点击跳转](https://www.waveshare.net/shop/Audio-Driver-HAT.htm) |
+# Bill of Materials
 
-# 使用方法
+| Robot Name        | Manufacturer | Reference Link                                                |
+| :-----------------| ------------ | ------------------------------------------------------------- |
+| RDK X3 (4GB RAM)  | Multiple     | [Click here](https://developer.horizon.cc/rdkx3)              |
+| Microphone Board  | Waveshare    | [Click here](https://www.waveshare.net/shop/Audio-Driver-HAT.htm) |
 
-## 准备工作
+# Instructions for Use
 
-在体验之前，需要具备以下基本条件：
+## Preparation
 
-- 确认地平线RDK为4GB内存版本
-- 地平线RDK已烧录好地平线提供的Ubuntu 20.04系统镜像
-- 音频板正确连接到RDK X3，耳机接口接上耳机或音响
-- 安装transformers，命令为 `pip3 install transformers -i https://pypi.tuna.tsinghua.edu.cn/simple`
-- 更新hobot-dnn，命令为 `sudo apt update; sudo apt install hobot-dnn`
+Before starting the experience, you need to meet the following basic requirements:
 
-## 机器人组装
+- Confirm that the Horizon RDK is the 4GB RAM version
+- The Horizon RDK has been flashed with the Horizon-provided Ubuntu 20.04 system image
+- The audio board is correctly connected to the RDK X3, with headphones or speakers plugged into the headphone jack
+- Install transformers with the command `pip3 install transformers -i https://pypi.tuna.tsinghua.edu.cn/simple`
+- Update hobot-dnn with the command `sudo apt update; sudo apt install hobot-dnn`
 
-1. 将麦克风板连接到地平线RDK X3 40PIN GPIO 接口上，连接后实物如下图：
+## Robot Assembly
+
+1. Connect the microphone board to the Horizon RDK X3 40PIN GPIO interface. The physical connection should appear as shown in the image below:
 
     ![x3pi_mic](./imgs/x3pi_mic.png)
 
-2. 耳机接口接上耳机或音响
+2. Plug in headphones or speakers into the headphone jack.
 
-## 安装功能包
+## Install Package
 
-启动RDK X3后，通过终端SSH或者VNC连接机器人，复制如下命令在RDK的系统上运行，完成相关Node的安装。
+After starting the RDK X3, connect to the robot via SSH or VNC in the terminal, copy and run the following command on the RDK system to complete the installation of the related Node.
 
 ```bash
 sudo apt update
 sudo apt install -y tros-hobot-chatbot
 ```
 
-## 运行智能聊天机器人
+## Run Intelligent Chatbot
 
-1. 运行程序前，需要下载模型文件并解压
+1. Before running the program, download the model files and unzip them.
 
-    1. 下载大语言模型文件
- 
+    1. Download the large language model file
+
         ```bash
-        # 下载大语言模型文件
+        # Download the large language model file
         wget http://sunrise.horizon.cc/llm-model/llm_model.tar.gz
 
-        # 解压
+``````        # Unzip
         sudo tar -xf llm_model.tar.gz -C /opt/tros/${TROS_DISTRO}/lib/hobot_llm/
         ```
 
-   2. 下载TTS模型
+   2. Download TTS model
 
        ```bash
        wget http://sunrise.horizon.cc//tts-model/tts_model.tar.gz
        sudo tar -xf tts_model.tar.gz -C /opt/tros/${TROS_DISTRO}/lib/hobot_tts/
        ```
 
-2. 修改BPU保留内存大小和设置CPU频率
+2. Modify BPU reserved memory size and set CPU frequency
 
-    修改BPU保留内存大小为1.7GB，设置方法参考[TODO]()。
+    Set BPU reserved memory size to 1.7GB, refer to [TODO]() for the method.
 
-    重启后调整CPU最高频率为1.5GHz，以及设置调度模式为`performance`，命令如下：
+    After reboot, adjust CPU maximum frequency to 1.5GHz and set scheduling mode to `performance`, with the following commands:
 
     ```bash
     sudo bash -c 'echo 1 > /sys/devices/system/cpu/cpufreq/boost'
     sudo bash -c 'echo performance > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor'
     ```
 
-3. 配置智能语音模块和加载音频驱动
-   
-   1. 拷贝配置文件
+3. Configure intelligent speech module and load audio driver
+
+   1. Copy configuration files
 
         ```shell
-        # 从tros.b的安装路径中拷贝出运行示例需要的配置文件，若已拷贝则可忽略
+        # Copy the necessary configuration files for running examples from the installation path of tros.b, ignore if already copied
         cp -r /opt/tros/${TROS_DISTRO}/lib/hobot_audio/config/ .
         ```
 
-   2. 修改 *config/audio_config.json*，将`asr_mode`字段为`1`。
+   2. Modify *config/audio_config.json* and set the `asr_mode` field to `1`.
 
-   3. 确认音频设备设置正确，具体设置方法参考RDK用户手册[音频转接板](https://developer.horizon.cc/documents_rdk/hardware_development/rdk_x3/audio_board)章节。
+   3. Confirm the correct audio device settings, refer to the RDK user manual [Audio Interface Board](https://developer.horizon.cc/documents_rdk/hardware_development/rdk_x3/audio_board) for specific setup instructions.
 
-4. 配置tros.b环境和启动应用
+4. Configure tros.b environment and start the application
 
     ```shell
-    # 配置tros.b环境
+    # Configure tros.b environment
     source /opt/tros/setup.bash
 
-    # 屏蔽调式打印信息
+    # Suppress debug print information
     export GLOG_minloglevel=3
 
-    #启动launch文件
+    # Start the launch file
     ros2 launch hobot_chatbot chatbot.launch.py
     ```
 
-    启动成功后，使用唤醒词“地平线你好”唤醒机器人，唤醒后即可同机器人聊天。注意，开启每轮对话时，都要先使用唤醒词“地平线你好”唤醒机器人。
+    Once successfully launched, wake up the robot using the wake-up word "Horizon Hello" and start chatting with the robot. Note that each round of conversation must start by waking up the robot with the wake-up word "Horizon Hello".# Interface Description
 
-# 接口说明
+## Topics
 
-## 话题
+| Name         | Message Type                                                                                                            | Description                                    |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
+| /audio_smart | [audio_msg/msg/SmartAudioData](https://github.com/HorizonRDK/hobot_msgs/blob/develop/audio_msg/msg/SmartAudioData.msg) | Publishes intelligent results of smart audio processing |
+| /audio_asr   | std_msgs/msg/String                                                                                                    | Publishes ASR recognition results               |
+| /tts_text    | std_msgs/msg/String                                                                                                    | Publishes results of large language model       |
 
-| 名称         | 消息类型                                                                                                               | 说明                       |
-| ------------ | ---------------------------------------------------------------------------------------------------------------------- | -------------------------- |
-| /audio_smart | [audio_msg/msg/SmartAudioData](https://github.com/HorizonRDK/hobot_msgs/blob/develop/audio_msg/msg/SmartAudioData.msg) | 发布智能语音处理的智能结果 |
-| /audio_asr   | std_msgs/msg/String                                                                                                    | 发布ASR识别结果            |
-| /tts_text    | std_msgs/msg/String                                                                                                    | 发布大语言模型结果         |
+# Frequently Asked Questions
 
-# 常见问题
+1. No response from the robot?
 
-1. 机器人无应答？
-
-- 确认音频设备连接是否正常，并连接耳机或音响
-- 确认是否加载音频驱动
-- 确认加载音频驱动前是否已有音频设备连接
-- 确认 *config/audio_config.json* `asr_mode`字段为`1`
-- 确认开发板内存为4GB，同时修改BPU保留内存大小为1.7GB
+- Confirm if audio device connection is normal and headphones or speakers are connected
+- Confirm if audio drivers are loaded
+- Confirm if audio devices were connected before loading audio drivers
+- Confirm that the `asr_mode` field in *config/audio_config.json* is set to `1`
+- Confirm that the development board has 4GB of memory and modify the BPU reserved memory size to 1.7GB
