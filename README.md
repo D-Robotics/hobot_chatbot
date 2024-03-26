@@ -50,7 +50,7 @@ sudo apt install -y tros-hobot-chatbot
         # Download the large language model file
         wget http://sunrise.horizon.cc/llm-model/llm_model.tar.gz
 
-``````        # Unzip
+        # Unzip
         sudo tar -xf llm_model.tar.gz -C /opt/tros/${TROS_DISTRO}/lib/hobot_llm/
         ```
 
@@ -85,7 +85,7 @@ sudo apt install -y tros-hobot-chatbot
 
    3. Confirm the correct audio device settings, refer to the RDK user manual [Audio Interface Board](https://developer.horizon.cc/documents_rdk/hardware_development/rdk_x3/audio_board) for specific setup instructions.
 
-4. Configure tros.b environment and start the application
+   4. Configure tros.b environment and start the application
 
     ```shell
     # Configure tros.b environment
