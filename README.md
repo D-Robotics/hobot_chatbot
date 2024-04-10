@@ -35,9 +35,16 @@ Before starting the experience, you need to meet the following basic requirement
 
 After starting the RDK X3, connect to the robot via SSH or VNC in the terminal, copy and run the following command on the RDK system to complete the installation of the related Node.
 
+tros foxy:
 ```bash
 sudo apt update
 sudo apt install -y tros-hobot-chatbot
+```
+
+tros humble:
+```bash
+sudo apt update
+sudo apt install -y tros-humble-hobot-chatbot
 ```
 
 ## Run Intelligent Chatbot
@@ -46,6 +53,7 @@ sudo apt install -y tros-hobot-chatbot
 
     1. Download the large language model file
 
+        tros foxy:
         ```bash
         # Download the large language model file
         wget http://sunrise.horizon.cc/llm-model/llm_model.tar.gz
@@ -54,10 +62,28 @@ sudo apt install -y tros-hobot-chatbot
         sudo tar -xf llm_model.tar.gz -C /opt/tros/${TROS_DISTRO}/lib/hobot_llm/
         ```
 
+        tros humble:
+        ```bash
+        # Download the large language model file
+        wget http://sunrise.horizon.cc/llm-model/llm_model.tar.gz
+
+        source /opt/tros/humble/setup.bash
+        # Unzip
+        sudo tar -xf llm_model.tar.gz -C /opt/tros/${TROS_DISTRO}/lib/hobot_llm/
+        ```
+
    2. Download TTS model
 
+        tros foxy:
        ```bash
        wget http://sunrise.horizon.cc//tts-model/tts_model.tar.gz
+       sudo tar -xf tts_model.tar.gz -C /opt/tros/${TROS_DISTRO}/lib/hobot_tts/
+       ```
+
+        tros humble:
+       ```bash
+       wget http://sunrise.horizon.cc//tts-model/tts_model.tar.gz
+       source /opt/tros/humble/setup.bash
        sudo tar -xf tts_model.tar.gz -C /opt/tros/${TROS_DISTRO}/lib/hobot_tts/
        ```
 
@@ -76,7 +102,15 @@ sudo apt install -y tros-hobot-chatbot
 
    1. Copy configuration files
 
+        tros foxy:
         ```shell
+        # Copy the necessary configuration files for running examples from the installation path of tros.b, ignore if already copied
+        cp -r /opt/tros/${TROS_DISTRO}/lib/hobot_audio/config/ .
+        ```
+
+        tros humble:
+        ```shell
+        source /opt/tros/humble/setup.bash
         # Copy the necessary configuration files for running examples from the installation path of tros.b, ignore if already copied
         cp -r /opt/tros/${TROS_DISTRO}/lib/hobot_audio/config/ .
         ```
@@ -85,11 +119,24 @@ sudo apt install -y tros-hobot-chatbot
 
    3. Confirm the correct audio device settings, refer to the RDK user manual [Audio Interface Board](https://developer.horizon.cc/documents_rdk/hardware_development/rdk_x3/audio_board) for specific setup instructions.
 
-   4. Configure tros.b environment and start the application
+4. Configure tros.b environment and start the application
 
+    tros foxy:
     ```shell
     # Configure tros.b environment
     source /opt/tros/setup.bash
+
+    # Suppress debug print information
+    export GLOG_minloglevel=3
+
+    # Start the launch file
+    ros2 launch hobot_chatbot chatbot.launch.py
+    ```
+
+    tros humble:
+    ```shell
+    # Configure tros.b humble environment
+    source /opt/tros/humble/setup.bash
 
     # Suppress debug print information
     export GLOG_minloglevel=3
