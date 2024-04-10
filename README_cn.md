@@ -35,9 +35,16 @@
 
 启动RDK X3后，通过终端SSH或者VNC连接机器人，复制如下命令在RDK的系统上运行，完成相关Node的安装。
 
+tros foxy 版本
 ```bash
 sudo apt update
 sudo apt install -y tros-hobot-chatbot
+```
+
+tros humble 版本
+```bash
+sudo apt update
+sudo apt install -y tros-humble-hobot-chatbot
 ```
 
 ## 运行智能聊天机器人
@@ -45,7 +52,8 @@ sudo apt install -y tros-hobot-chatbot
 1. 运行程序前，需要下载模型文件并解压
 
     1. 下载大语言模型文件
- 
+
+       tros foxy 版本
         ```bash
         # 下载大语言模型文件
         wget http://sunrise.horizon.cc/llm-model/llm_model.tar.gz
@@ -54,10 +62,30 @@ sudo apt install -y tros-hobot-chatbot
         sudo tar -xf llm_model.tar.gz -C /opt/tros/${TROS_DISTRO}/lib/hobot_llm/
         ```
 
+       tros humble 版本
+        ```bash
+        # 下载大语言模型文件
+        wget http://sunrise.horizon.cc/llm-model/llm_model.tar.gz
+
+        # 配置tros.b humble环境
+        source /opt/tros/humble/setup.bash
+
+        # 解压
+        sudo tar -xf llm_model.tar.gz -C /opt/tros/${TROS_DISTRO}/lib/hobot_llm/
+        ```
+
    2. 下载TTS模型
 
+        tros foxy 版本
        ```bash
        wget http://sunrise.horizon.cc//tts-model/tts_model.tar.gz
+       sudo tar -xf tts_model.tar.gz -C /opt/tros/${TROS_DISTRO}/lib/hobot_tts/
+       ```
+
+        tros humble 版本
+       ```bash
+       wget http://sunrise.horizon.cc//tts-model/tts_model.tar.gz
+       source /opt/tros/humble/setup.bash
        sudo tar -xf tts_model.tar.gz -C /opt/tros/${TROS_DISTRO}/lib/hobot_tts/
        ```
 
@@ -76,7 +104,15 @@ sudo apt install -y tros-hobot-chatbot
    
    1. 拷贝配置文件
 
+       tros foxy 版本
         ```shell
+        # 从tros.b的安装路径中拷贝出运行示例需要的配置文件，若已拷贝则可忽略
+        cp -r /opt/tros/${TROS_DISTRO}/lib/hobot_audio/config/ .
+        ```
+
+        tros humble 版本
+        ```shell
+        source /opt/tros/humble/setup.bash
         # 从tros.b的安装路径中拷贝出运行示例需要的配置文件，若已拷贝则可忽略
         cp -r /opt/tros/${TROS_DISTRO}/lib/hobot_audio/config/ .
         ```
@@ -87,9 +123,22 @@ sudo apt install -y tros-hobot-chatbot
 
 4. 配置tros.b环境和启动应用
 
+    tros foxy 版本
     ```shell
     # 配置tros.b环境
     source /opt/tros/setup.bash
+
+    # 屏蔽调式打印信息
+    export GLOG_minloglevel=3
+
+    #启动launch文件
+    ros2 launch hobot_chatbot chatbot.launch.py
+    ```
+
+    tros humble 版本
+    ```shell
+    # 配置tros.b humble环境
+    source /opt/tros/humble/setup.bash
 
     # 屏蔽调式打印信息
     export GLOG_minloglevel=3
