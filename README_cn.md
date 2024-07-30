@@ -8,7 +8,7 @@
 
 | 机器人名称         | 生产厂家 | 参考链接                                                        |
 | :----------------- | -------- | --------------------------------------------------------------- |
-| RDK X3 （4GB内存） | 多厂家   | [点击跳转](https://developer.horizon.cc/rdkx3)                  |
+| RDK X3 （4GB内存） | 多厂家   | [点击跳转](https://developer.d-robotics.cc/rdkx3)                  |
 | 麦克风板           | 微雪电子 | [点击跳转](https://www.waveshare.net/shop/Audio-Driver-HAT.htm) |
 
 # 使用方法
@@ -17,15 +17,15 @@
 
 在体验之前，需要具备以下基本条件：
 
-- 确认地平线RDK为4GB内存版本
-- 地平线RDK已烧录好地平线提供的Ubuntu 20.04系统镜像
+- 确认RDK为4GB内存版本
+- RDK已烧录好Ubuntu 20.04系统镜像
 - 音频板正确连接到RDK X3，耳机接口接上耳机或音响
 - 安装transformers，命令为 `pip3 install transformers -i https://pypi.tuna.tsinghua.edu.cn/simple`
 - 更新hobot-dnn，命令为 `sudo apt update; sudo apt install hobot-dnn`
 
 ## 机器人组装
 
-1. 将麦克风板连接到地平线RDK X3 40PIN GPIO 接口上，连接后实物如下图：
+1. 将麦克风板连接到RDK X3 40PIN GPIO 接口上，连接后实物如下图：
 
     ![x3pi_mic](./imgs/x3pi_mic.png)
 
@@ -155,7 +155,7 @@ sudo apt install -y tros-humble-hobot-chatbot
 
 | 名称         | 消息类型                                                                                                               | 说明                       |
 | ------------ | ---------------------------------------------------------------------------------------------------------------------- | -------------------------- |
-| /audio_smart | [audio_msg/msg/SmartAudioData](https://github.com/HorizonRDK/hobot_msgs/blob/develop/audio_msg/msg/SmartAudioData.msg) | 发布智能语音处理的智能结果 |
+| /audio_smart | [audio_msg/msg/SmartAudioData](https://github.com/D-Robotics/hobot_msgs/blob/develop/audio_msg/msg/SmartAudioData.msg) | 发布智能语音处理的智能结果 |
 | /audio_asr   | std_msgs/msg/String                                                                                                    | 发布ASR识别结果            |
 | /tts_text    | std_msgs/msg/String                                                                                                    | 发布大语言模型结果         |
 

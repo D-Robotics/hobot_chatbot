@@ -8,7 +8,7 @@ English| [简体中文](./README_cn.md)
 
 | Robot Name        | Manufacturer | Reference Link                                                |
 | :-----------------| ------------ | ------------------------------------------------------------- |
-| RDK X3 (4GB RAM)  | Multiple     | [Click here](https://developer.horizon.cc/rdkx3)              |
+| RDK X3 (4GB RAM)  | Multiple     | [Click here](https://developer.d-robotics.cc/rdkx3)              |
 | Microphone Board  | Waveshare    | [Click here](https://www.waveshare.net/shop/Audio-Driver-HAT.htm) |
 
 # Instructions for Use
@@ -17,15 +17,15 @@ English| [简体中文](./README_cn.md)
 
 Before starting the experience, you need to meet the following basic requirements:
 
-- Confirm that the Horizon RDK is the 4GB RAM version
-- The Horizon RDK has been flashed with the Horizon-provided Ubuntu 20.04 system image
+- Confirm that the RDK is the 4GB RAM version
+- The RDK has been flashed with the Ubuntu 20.04 system image
 - The audio board is correctly connected to the RDK X3, with headphones or speakers plugged into the headphone jack
 - Install transformers with the command `pip3 install transformers -i https://pypi.tuna.tsinghua.edu.cn/simple`
 - Update hobot-dnn with the command `sudo apt update; sudo apt install hobot-dnn`
 
 ## Robot Assembly
 
-1. Connect the microphone board to the Horizon RDK X3 40PIN GPIO interface. The physical connection should appear as shown in the image below:
+1. Connect the microphone board to the RDK X3 40PIN GPIO interface. The physical connection should appear as shown in the image below:
 
     ![x3pi_mic](./imgs/x3pi_mic.png)
 
@@ -56,7 +56,7 @@ sudo apt install -y tros-humble-hobot-chatbot
         tros foxy:
         ```bash
         # Download the large language model file
-        wget http://sunrise.horizon.cc/llm-model/llm_model.tar.gz
+        wget http://archive.d-robotics.cc/tros/llm-model/llm_model.tar.gz
 
         # Unzip
         sudo tar -xf llm_model.tar.gz -C /opt/tros/${TROS_DISTRO}/lib/hobot_llm/
@@ -65,7 +65,7 @@ sudo apt install -y tros-humble-hobot-chatbot
         tros humble:
         ```bash
         # Download the large language model file
-        wget http://sunrise.horizon.cc/llm-model/llm_model.tar.gz
+        wget http://archive.d-robotics.cc/tros/llm-model/llm_model.tar.gz
 
         source /opt/tros/humble/setup.bash
         # Unzip
@@ -76,13 +76,13 @@ sudo apt install -y tros-humble-hobot-chatbot
 
         tros foxy:
        ```bash
-       wget http://sunrise.horizon.cc//tts-model/tts_model.tar.gz
+       wget http://archive.d-robotics.cc/tros/tts-model/tts_model.tar.gz
        sudo tar -xf tts_model.tar.gz -C /opt/tros/${TROS_DISTRO}/lib/hobot_tts/
        ```
 
         tros humble:
        ```bash
-       wget http://sunrise.horizon.cc//tts-model/tts_model.tar.gz
+       wget http://archive.d-robotics.cc/tros/tts-model/tts_model.tar.gz
        source /opt/tros/humble/setup.bash
        sudo tar -xf tts_model.tar.gz -C /opt/tros/${TROS_DISTRO}/lib/hobot_tts/
        ```
@@ -151,7 +151,7 @@ sudo apt install -y tros-humble-hobot-chatbot
 
 | Name         | Message Type                                                                                                            | Description                                    |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
-| /audio_smart | [audio_msg/msg/SmartAudioData](https://github.com/HorizonRDK/hobot_msgs/blob/develop/audio_msg/msg/SmartAudioData.msg) | Publishes intelligent results of smart audio processing |
+| /audio_smart | [audio_msg/msg/SmartAudioData](https://github.com/D-Robotics/hobot_msgs/blob/develop/audio_msg/msg/SmartAudioData.msg) | Publishes intelligent results of smart audio processing |
 | /audio_asr   | std_msgs/msg/String                                                                                                    | Publishes ASR recognition results               |
 | /tts_text    | std_msgs/msg/String                                                                                                    | Publishes results of large language model       |
 
