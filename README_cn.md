@@ -17,7 +17,7 @@
 
 在体验之前，需要具备以下基本条件：
 
-- 确认RDK为4GB内存版本
+- 确认RDK为4GB以上内存版本
 - RDK已烧录好Ubuntu 20.04系统镜像
 - 音频板正确连接到RDK X3，耳机接口接上耳机或音响
 - 安装transformers，命令为 `pip3 install transformers -i https://pypi.tuna.tsinghua.edu.cn/simple`

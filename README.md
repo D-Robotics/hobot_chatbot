@@ -19,13 +19,13 @@ Before starting the experience, you need to meet the following basic requirement
 
 - Confirm that the RDK is the 4GB RAM version
 - The RDK has been flashed with the Ubuntu 20.04 system image
-- The audio board is correctly connected to the RDK X3, with headphones or speakers plugged into the headphone jack
+- The audio board is correctly connected to the RDK, with headphones or speakers plugged into the headphone jack
 - Install transformers with the command `pip3 install transformers -i https://pypi.tuna.tsinghua.edu.cn/simple`
 - Update hobot-dnn with the command `sudo apt update; sudo apt install hobot-dnn`
 
 ## Robot Assembly
 
-1. Connect the microphone board to the RDK X3 40PIN GPIO interface. The physical connection should appear as shown in the image below:
+1. Connect the microphone board to the RDK 40PIN GPIO interface. The physical connection should appear as shown in the image below:
 
     ![x3pi_mic](./imgs/x3pi_mic.png)
 
@@ -33,7 +33,7 @@ Before starting the experience, you need to meet the following basic requirement
 
 ## Install Package
 
-After starting the RDK X3, connect to the robot via SSH or VNC in the terminal, copy and run the following command on the RDK system to complete the installation of the related Node.
+After starting the RDK, connect to the robot via SSH or VNC in the terminal, copy and run the following command on the RDK system to complete the installation of the related Node.
 
 tros foxy:
 ```bash
