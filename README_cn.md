@@ -56,7 +56,7 @@ sudo apt install -y tros-humble-hobot-chatbot
        tros foxy 版本
         ```bash
         # 下载大语言模型文件
-        wget http://sunrise.horizon.cc/llm-model/llm_model.tar.gz
+        wget http://archive.d-robotics.cc/llm-model/llm_model.tar.gz
 
         # 解压
         sudo tar -xf llm_model.tar.gz -C /opt/tros/${TROS_DISTRO}/lib/hobot_llm/
@@ -65,7 +65,7 @@ sudo apt install -y tros-humble-hobot-chatbot
        tros humble 版本
         ```bash
         # 下载大语言模型文件
-        wget http://sunrise.horizon.cc/llm-model/llm_model.tar.gz
+        wget http://archive.d-robotics.cc/llm-model/llm_model.tar.gz
 
         # 配置tros.b humble环境
         source /opt/tros/humble/setup.bash
@@ -78,13 +78,13 @@ sudo apt install -y tros-humble-hobot-chatbot
 
         tros foxy 版本
        ```bash
-       wget http://sunrise.horizon.cc//tts-model/tts_model.tar.gz
+       wget http://archive.d-robotics.cc/llm-model/llm_model.tar.gz
        sudo tar -xf tts_model.tar.gz -C /opt/tros/${TROS_DISTRO}/lib/hobot_tts/
        ```
 
         tros humble 版本
        ```bash
-       wget http://sunrise.horizon.cc//tts-model/tts_model.tar.gz
+       wget http://archive.d-robotics.cc/llm-model/llm_model.tar.gz
        source /opt/tros/humble/setup.bash
        sudo tar -xf tts_model.tar.gz -C /opt/tros/${TROS_DISTRO}/lib/hobot_tts/
        ```

@@ -56,7 +56,7 @@ sudo apt install -y tros-humble-hobot-chatbot
         tros foxy:
         ```bash
         # Download the large language model file
-        wget http://archive.d-robotics.cc/tros/llm-model/llm_model.tar.gz
+        wget http://archive.d-robotics.cc/llm-model/llm_model.tar.gz
 
         # Unzip
         sudo tar -xf llm_model.tar.gz -C /opt/tros/${TROS_DISTRO}/lib/hobot_llm/
@@ -65,7 +65,7 @@ sudo apt install -y tros-humble-hobot-chatbot
         tros humble:
         ```bash
         # Download the large language model file
-        wget http://archive.d-robotics.cc/tros/llm-model/llm_model.tar.gz
+        wget http://archive.d-robotics.cc/llm-model/llm_model.tar.gz
 
         source /opt/tros/humble/setup.bash
         # Unzip
@@ -76,13 +76,13 @@ sudo apt install -y tros-humble-hobot-chatbot
 
         tros foxy:
        ```bash
-       wget http://archive.d-robotics.cc/tros/tts-model/tts_model.tar.gz
+       wget http://archive.d-robotics.cc/llm-model/llm_model.tar.gz
        sudo tar -xf tts_model.tar.gz -C /opt/tros/${TROS_DISTRO}/lib/hobot_tts/
        ```
 
         tros humble:
        ```bash
-       wget http://archive.d-robotics.cc/tros/tts-model/tts_model.tar.gz
+       wget http://archive.d-robotics.cc/llm-model/llm_model.tar.gz
        source /opt/tros/humble/setup.bash
        sudo tar -xf tts_model.tar.gz -C /opt/tros/${TROS_DISTRO}/lib/hobot_tts/
        ```
